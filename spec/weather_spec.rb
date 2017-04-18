@@ -11,4 +11,10 @@ describe Weather do
         expect(subject.random_num).to be > 0
     end
     
+    describe '#forecast' do
+        it 'gives the forecast as sunny or stormy' do
+            expect(subject.forecast).to eq(:sunny).or eq(:stormy)
+        end
+    end
+    
 end

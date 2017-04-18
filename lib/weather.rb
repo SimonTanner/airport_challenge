@@ -13,7 +13,7 @@ class Weather
     end
     
     def forecast
-        
+        return random_num < 7 ? :sunny : :stormy
     end
     
 end
