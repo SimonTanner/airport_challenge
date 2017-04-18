@@ -1,18 +1,10 @@
 require './lib/air_traffic_control'
 require './lib/airplane'
+require './lib/weather'
 
 describe Airport do
-    # it 'can clear a plane for take off' do
-    #     airport = Airport.new
-    #     expect(airport.takeoff).to be_flying
-    # end
-    
-    # it 'can allow a plane to land at the airport' do
-    #     airport = Airport.new
-    #     expect(airport.landed).to be_landed
-    # end
-    
-    it { is_expected.to respond_to(:takeoff) }
+
+    it { is_expected.to respond_to(:takeoff).with(1).arguments }
     
     it { is_expected.to respond_to(:landed) }
     
@@ -30,6 +22,14 @@ describe Airport do
         airport.takeoff
         expect(airport.planes).to eq []
     end
+    
+    it 'When weather is stormy won\'t allow a plane to land' do
+        plane = Airplane.new
+        subject.landed(plane)
+        expect{ subject.takeoff(:stormy) }.to raise_error 'Weather conditions are too stormy to take off!'
+    end
+    
+    
 end
         
         

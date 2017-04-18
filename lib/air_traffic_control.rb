@@ -8,11 +8,13 @@ class Airport
         @planes = []
     end
     
-    def takeoff
+    def takeoff(weather_forecast = :sunny)
+        fail 'Weather conditions are too stormy to take off!' if weather_forecast == :stormy
         @planes.pop
     end
     
     def landed(plane)
+        
         @planes << plane
     end
     
