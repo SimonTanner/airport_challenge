@@ -9,7 +9,7 @@ class Airport
     end
     
     def takeoff
-        Airplane.new
+        @planes.pop
     end
     
     def landed(plane)
